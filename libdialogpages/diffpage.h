@@ -22,6 +22,8 @@
 #include "pagebase.h"
 #include "dialogpagesexport.h"
 
+#include <kdeversion.h>
+
 class QCheckBox;
 class QDialog;
 class QSpinBox;
@@ -30,10 +32,17 @@ class QButtonGroup;
 class QGroupBox;
 
 class KLineEdit;
-class KEditListWidget;
 class KTabWidget;
 class KUrlComboBox;
 class KUrlRequester;
+
+#if KDE_IS_VERSION(4, 6, 0)
+class KEditListWidget;
+#else
+namespace Internal {
+class KEditListWidget;
+}
+#endif
 
 class DiffSettings;
 
@@ -85,7 +94,11 @@ public:
 	QDialog*       m_ignoreRegExpDialog;
 
 	QGroupBox*     m_excludeFilePatternGroupBox;
+#if KDE_IS_VERSION(4, 6, 0)
 	KEditListWidget*  m_excludeFilePatternEditListBox;
+#else
+	Internal::KEditListWidget*  m_excludeFilePatternEditListBox;
+#endif
 
 	QGroupBox*     m_excludeFileNameGroupBox;
 	KUrlComboBox*  m_excludeFileURLComboBox;

@@ -14,6 +14,11 @@ set(dialogpages_PART_SRCS
 	filespage.cpp
 	viewpage.cpp )
 
+if(${KDE_VERSION} VERSION_LESS "4.6.0")
+    set(dialogpages_PART_SRCS
+        ${dialogpages_PART_SRCS}
+        keditlistwidget.cpp)
+endif()
 
 kde4_add_library(komparedialogpages SHARED ${dialogpages_PART_SRCS})
 

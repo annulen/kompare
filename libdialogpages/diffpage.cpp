@@ -46,6 +46,8 @@
 
 #include "diffsettings.h"
 
+using namespace Internal;
+
 DiffPage::DiffPage() : PageBase(), m_ignoreRegExpDialog( 0 )
 {
 	m_tabWidget = new KTabWidget( this );
